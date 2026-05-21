@@ -8,236 +8,65 @@
   @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Unbounded:wght@300;400;700;900&display=swap');
 
   :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --surface2: #1a1a1a;
-    --border: #2a2a2a;
-    --accent: #c8f53a;
-    --accent2: #ff6b35;
-    --text: #f0f0f0;
-    --muted: #666;
-    --green: #4ade80;
-    --orange: #fb923c;
-    --red: #f87171;
+    --bg: #0a0a0a; --surface: #111111; --surface2: #1a1a1a;
+    --border: #2a2a2a; --accent: #c8f53a; --accent2: #ff6b35;
+    --text: #f0f0f0; --muted: #666; --green: #4ade80;
+    --orange: #fb923c; --red: #f87171;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Mono', monospace; min-height: 100vh; overflow-x: hidden; }
 
-  .noise {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  }
+  .noise { position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
 
-  header {
-    position: relative; z-index: 1;
-    padding: 40px 40px 0;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 30px;
-  }
-
-  .header-top {
-    display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    font-family: 'Unbounded', sans-serif;
-    font-size: clamp(28px, 5vw, 52px);
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -2px;
-  }
-
+  header { position: relative; z-index: 1; padding: 40px 40px 30px; border-bottom: 1px solid var(--border); }
+  .header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .logo { font-family: 'Unbounded', sans-serif; font-size: clamp(28px, 5vw, 52px); font-weight: 900; line-height: 1; letter-spacing: -2px; }
   .logo span { color: var(--accent); }
-
-  .subtitle {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-top: 8px;
-  }
-
-  .week-nav {
-    display: flex; gap: 4px; align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .week-btn {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    padding: 8px 16px;
-    cursor: pointer;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: all 0.2s;
-  }
-
+  .subtitle { font-size: 11px; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; margin-top: 8px; }
+  .week-nav { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+  .week-btn { background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-family: 'DM Mono', monospace; font-size: 11px; padding: 8px 16px; cursor: pointer; letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; }
   .week-btn:hover { border-color: var(--accent); color: var(--accent); }
   .week-btn.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 500; }
+  .progress-bar { height: 2px; background: var(--surface2); margin-top: 20px; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
+  .progress-label { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; }
 
-  .progress-bar {
-    height: 2px;
-    background: var(--surface2);
-    margin-top: 20px;
-    position: relative;
-  }
+  main { position: relative; z-index: 1; padding: 40px; max-width: 1100px; }
 
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
-  }
+  .week-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+  .week-title { font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
+  .week-objective { font-size: 12px; color: var(--muted); border: 1px solid var(--border); padding: 4px 12px; }
 
-  .progress-label {
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 6px;
-  }
+  .sessions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 40px; }
 
-  main {
-    position: relative; z-index: 1;
-    padding: 40px;
-    max-width: 1100px;
-  }
-
-  .week-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 8px; flex-wrap: wrap; gap: 12px;
-  }
-
-  .week-title {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  .week-objective {
-    font-size: 12px;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    padding: 4px 12px;
-  }
-
-  .sessions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-
-  .session-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 24px;
-    transition: border-color 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .session-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: var(--border);
-    transition: background 0.3s;
-  }
-
+  .session-card { background: var(--surface); border: 1px solid var(--border); padding: 24px; transition: border-color 0.2s; position: relative; overflow: hidden; }
+  .session-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border); transition: background 0.3s; }
   .session-card.completed::before { background: var(--green); }
   .session-card.in-progress::before { background: var(--accent); }
-
   .session-card:hover { border-color: #3a3a3a; }
 
-  .session-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 16px;
-  }
-
-  .session-label {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .session-type {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border: 1px solid;
-  }
-
+  .session-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .session-label { font-family: 'Unbounded', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+  .session-type { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; border: 1px solid; }
   .type-endurance { border-color: #3b82f6; color: #3b82f6; }
   .type-fractionne { border-color: var(--accent2); color: var(--accent2); }
   .type-tempo { border-color: var(--accent); color: var(--accent); }
   .type-recup { border-color: var(--green); color: var(--green); }
   .type-objectif { border-color: #a78bfa; color: #a78bfa; }
 
-  .session-title {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 1.3;
-    margin-bottom: 12px;
-  }
-
-  .session-details {
-    font-size: 11px;
-    color: var(--muted);
-    line-height: 2;
-    margin-bottom: 20px;
-  }
-
+  .session-title { font-family: 'Unbounded', sans-serif; font-size: 15px; font-weight: 400; line-height: 1.3; margin-bottom: 12px; }
+  .session-details { font-size: 11px; color: var(--muted); line-height: 2; margin-bottom: 20px; }
   .session-details strong { color: var(--text); font-weight: 400; }
-
   .divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
 
   .feedback-section { margin-top: 8px; }
+  .feedback-label { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; display: block; }
 
-  .feedback-label {
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: block;
-  }
-
-  .feeling-row {
-    display: flex; gap: 6px; margin-bottom: 12px;
-  }
-
-  .feeling-btn {
-    flex: 1;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    font-size: 16px;
-    padding: 8px 4px;
-    cursor: pointer;
-    transition: all 0.15s;
-    text-align: center;
-  }
-
+  .feeling-row { display: flex; gap: 6px; margin-bottom: 12px; }
+  .feeling-btn { flex: 1; background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-family: 'DM Mono', monospace; font-size: 16px; padding: 8px 4px; cursor: pointer; transition: all 0.15s; text-align: center; }
   .feeling-btn:hover { border-color: #444; }
   .feeling-btn.selected-1 { border-color: var(--red); background: rgba(248,113,113,0.1); }
   .feeling-btn.selected-2 { border-color: var(--orange); background: rgba(251,146,60,0.1); }
@@ -245,211 +74,39 @@
   .feeling-btn.selected-4 { border-color: var(--green); background: rgba(74,222,128,0.1); }
   .feeling-btn.selected-5 { border-color: var(--accent); background: rgba(200,245,58,0.15); }
 
-  .input-row {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;
-  }
+  .fatigue-row { display: flex; gap: 6px; margin-bottom: 12px; }
+  .fatigue-btn { flex: 1; background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-family: 'DM Mono', monospace; font-size: 10px; padding: 7px 3px; cursor: pointer; transition: all 0.15s; text-align: center; letter-spacing: 0; }
+  .fatigue-btn:hover { border-color: #444; }
+  .fatigue-btn.fat-selected { border-color: #a78bfa; background: rgba(167,139,250,0.12); color: #a78bfa; }
 
+  .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
   .field-group { display: flex; flex-direction: column; gap: 4px; }
-
-  .field-group label {
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  .field-group input {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    padding: 8px 10px;
-    width: 100%;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
+  .field-group label { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+  .field-group input { background: var(--surface2); border: 1px solid var(--border); color: var(--text); font-family: 'DM Mono', monospace; font-size: 13px; padding: 8px 10px; width: 100%; outline: none; transition: border-color 0.2s; }
   .field-group input:focus { border-color: var(--accent); }
 
-  .notes-input {
-    width: 100%;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    padding: 8px 10px;
-    resize: none;
-    height: 52px;
-    outline: none;
-    transition: border-color 0.2s;
-    margin-bottom: 10px;
-  }
+  .section-divider { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin: 12px 0 8px; display: flex; align-items: center; gap: 8px; }
+  .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
+  .notes-input { width: 100%; background: var(--surface2); border: 1px solid var(--border); color: var(--text); font-family: 'DM Mono', monospace; font-size: 11px; padding: 8px 10px; resize: none; height: 52px; outline: none; transition: border-color 0.2s; margin-bottom: 10px; }
   .notes-input:focus { border-color: var(--accent); }
 
-  .btn-validate {
-    width: 100%;
-    background: var(--accent);
-    border: none;
-    color: #000;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 11px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
+  .btn-validate { width: 100%; background: var(--accent); border: none; color: #000; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; padding: 11px; cursor: pointer; transition: all 0.2s; }
   .btn-validate:hover { background: #d4ff3a; transform: translateY(-1px); }
-  .btn-validate:active { transform: translateY(0); }
-
-  .btn-validated {
-    width: 100%;
-    background: transparent;
-    border: 1px solid var(--green);
-    color: var(--green);
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 11px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
+  .btn-validated { width: 100%; background: transparent; border: 1px solid var(--green); color: var(--green); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 11px; cursor: pointer; transition: all 0.2s; }
   .btn-validated:hover { background: rgba(74,222,128,0.05); }
 
-  .ai-section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 28px;
-    margin-bottom: 40px;
-    position: relative;
-    overflow: hidden;
-  }
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 32px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); padding: 16px 20px; }
+  .stat-value { font-family: 'Unbounded', sans-serif; font-size: 24px; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 4px; }
+  .stat-label { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
 
-  .ai-section::after {
-    content: 'AI';
-    position: absolute; bottom: -10px; right: 16px;
-    font-family: 'Unbounded', sans-serif;
-    font-size: 80px; font-weight: 900;
-    color: var(--surface2);
-    pointer-events: none; user-select: none;
-  }
+  .export-bar { background: var(--surface); border: 1px solid var(--border); padding: 16px 20px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .export-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+  .btn-export { background: transparent; border: 1px solid var(--border); color: var(--muted); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px; cursor: pointer; transition: all 0.2s; }
+  .btn-export:hover { border-color: var(--accent); color: var(--accent); }
 
-  .ai-header {
-    display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
-  }
-
-  .ai-dot {
-    width: 8px; height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.8); }
-  }
-
-  .ai-title {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  .ai-content {
-    font-size: 12px;
-    line-height: 1.9;
-    color: #ccc;
-    position: relative; z-index: 1;
-    white-space: pre-wrap;
-    min-height: 40px;
-  }
-
-  .ai-content.loading { color: var(--muted); font-style: italic; }
-
-  .btn-analyze {
-    margin-top: 16px;
-    background: transparent;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: all 0.2s;
-    position: relative; z-index: 1;
-  }
-
-  .btn-analyze:hover { background: rgba(200,245,58,0.08); }
-  .btn-analyze:disabled { opacity: 0.4; cursor: not-allowed; }
-
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
-    margin-bottom: 32px;
-  }
-
-  .stat-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 16px 20px;
-  }
-
-  .stat-value {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .stat-label {
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .week-tabs {
-    display: flex; gap: 0; margin-bottom: 28px; border-bottom: 1px solid var(--border);
-  }
-
-  .tab {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 12px 24px;
-    cursor: pointer;
-    color: var(--muted);
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-    background: none; border-top: none; border-left: none; border-right: none;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-  }
-
-  .tab.active { color: var(--text); border-bottom-color: var(--accent); }
-  .tab:hover:not(.active) { color: #999; }
-
-  @media (max-width: 600px) {
-    header, main { padding: 20px; }
-    .logo { font-size: 28px; }
-  }
+  @media (max-width: 600px) { header, main { padding: 20px; } .logo { font-size: 28px; } }
 </style>
 </head>
 <body>
@@ -463,34 +120,19 @@
     </div>
     <div class="week-nav" id="weekNav"></div>
   </div>
-  <div class="progress-bar">
-    <div class="progress-fill" id="progressFill" style="width:0%"></div>
-  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
   <div class="progress-label" id="progressLabel">0 / 12 séances complétées</div>
 </header>
 
 <main>
   <div class="stats-row" id="statsRow"></div>
 
-  <div class="week-tabs" id="weekTabs">
-    <button class="tab active" onclick="showView('program')">Programme</button>
-    <button class="tab" onclick="showView('ai')">Coach IA</button>
+  <div class="export-bar">
+    <span class="export-label">📋 Copie tes données pour l'analyse Coach IA dans Claude</span>
+    <button class="btn-export" onclick="exportData()">Exporter mes données</button>
   </div>
 
-  <div id="programView">
-    <div id="weekContent"></div>
-  </div>
-
-  <div id="aiView" style="display:none">
-    <div class="ai-section">
-      <div class="ai-header">
-        <div class="ai-dot"></div>
-        <div class="ai-title">Analyse & Recommandations</div>
-      </div>
-      <div class="ai-content" id="aiContent">Valide au moins une séance pour que je puisse analyser tes performances et adapter ton programme.</div>
-      <button class="btn-analyze" id="btnAnalyze" onclick="analyzeWithAI()">⟳ Analyser mes performances</button>
-    </div>
-  </div>
+  <div id="weekContent"></div>
 </main>
 
 <script>
@@ -498,260 +140,122 @@ const PROGRAM = [
   {
     week: 1, label: "Mise en route", objective: "Trouver le rythme",
     sessions: [
-      {
-        id: "s1", day: "Séance 1", type: "endurance", typeLabel: "Endurance fondamentale",
-        title: "Sortie longue décontractée",
-        details: [
-          ["Durée", "45 min"],
-          ["Intensité", "Très facile — on parle confortablement"],
-          ["Allure", "conversationnelle"],
-          ["Échauffement", "5 min marche + étirements légers"],
-          ["Corps", "40 min footing tranquille"],
-          ["Récup", "Marche 5 min + étirements"]
-        ],
-        description: "On ne cherche pas la performance. Juste sentir son corps, trouver une foulée agréable."
-      },
-      {
-        id: "s2", day: "Séance 2", type: "fractionne", typeLabel: "Fractionné",
-        title: "Intervalles 1 min / 2 min",
-        details: [
-          ["Durée", "35 min total"],
-          ["Échauffement", "10 min footing doux"],
-          ["Travail", "6× (1 min rapide + 2 min récup jogging)"],
-          ["Intensité effort", "Essoufflé mais pas épuisé (7/10)"],
-          ["Récup", "10 min footing + étirements"]
-        ],
-        description: "Premier contact avec le fractionné. L'objectif c'est de finir frais, pas de se vider."
-      },
-      {
-        id: "s3", day: "Séance 3", type: "tempo", typeLabel: "Tempo",
-        title: "Course à allure soutenue",
-        details: [
-          ["Durée", "40 min total"],
-          ["Échauffement", "10 min progressif"],
-          ["Tempo", "20 min à allure 10km (effort 7-8/10)"],
-          ["Récup", "10 min footing calme + étirements"],
-          ["Repère", "Tu peux parler en phrases courtes seulement"]
-        ],
-        description: "Première simulation d'allure course. Reste à l'écoute, ne pars pas trop vite."
-      }
+      { id:"s1", day:"Séance 1", type:"endurance", typeLabel:"Endurance fondamentale", title:"Sortie longue décontractée",
+        details:[["Durée","45 min"],["Intensité","Très facile — on parle confortablement"],["Allure","conversationnelle"],["Échauffement","5 min marche + étirements légers"],["Corps","40 min footing tranquille"],["Récup","Marche 5 min + étirements"]] },
+      { id:"s2", day:"Séance 2", type:"fractionne", typeLabel:"Fractionné", title:"Intervalles 1 min / 2 min",
+        details:[["Durée","35 min total"],["Échauffement","10 min footing doux"],["Travail","6× (1 min rapide + 2 min récup jogging)"],["Intensité effort","Essoufflé mais pas épuisé (7/10)"],["Récup","10 min footing + étirements"]] },
+      { id:"s3", day:"Séance 3", type:"tempo", typeLabel:"Tempo", title:"Course à allure soutenue",
+        details:[["Durée","40 min total"],["Échauffement","10 min progressif"],["Tempo","20 min à allure 10km (effort 7-8/10)"],["Récup","10 min footing calme + étirements"],["Repère","Tu peux parler en phrases courtes seulement"]] }
     ]
   },
   {
     week: 2, label: "Construction", objective: "Augmenter le volume",
     sessions: [
-      {
-        id: "s4", day: "Séance 4", type: "endurance", typeLabel: "Endurance fondamentale",
-        title: "Sortie longue progressive",
-        details: [
-          ["Durée", "55 min"],
-          ["Structure", "15 min easy / 25 min modéré / 15 min easy"],
-          ["Intensité", "Confortable — on respire par le nez"],
-          ["Objectif", "Tenir le rythme sans s'essouffler"]
-        ],
-        description: "+10 min vs sem. 1. On monte le volume, on garde le confort."
-      },
-      {
-        id: "s5", day: "Séance 5", type: "fractionne", typeLabel: "Fractionné",
-        title: "Intervalles 2 min / 2 min",
-        details: [
-          ["Échauffement", "10 min"],
-          ["Travail", "5× (2 min rapide + 2 min récup jogging)"],
-          ["Intensité", "Dur mais contrôlé (8/10)"],
-          ["Récup", "10 min footing léger"]
-        ],
-        description: "Les efforts durent plus longtemps. Essaie de garder la même vitesse sur chaque répétition."
-      },
-      {
-        id: "s6", day: "Séance 6", type: "tempo", typeLabel: "Tempo",
-        title: "Tempo bloc + côte",
-        details: [
-          ["Durée", "45 min"],
-          ["Échauffement", "10 min"],
-          ["Tempo", "25 min allure 10km"],
-          ["Option côte", "Si dispo: 2-3× montées de 200m"],
-          ["Récup", "10 min doux"]
-        ],
-        description: "Le tempo s'allonge. La côte est optionnelle mais excellente pour la force."
-      }
+      { id:"s4", day:"Séance 4", type:"endurance", typeLabel:"Endurance fondamentale", title:"Sortie longue progressive",
+        details:[["Durée","55 min"],["Structure","15 min easy / 25 min modéré / 15 min easy"],["Intensité","Confortable — on respire par le nez"],["Objectif","Tenir le rythme sans s'essouffler"]] },
+      { id:"s5", day:"Séance 5", type:"fractionne", typeLabel:"Fractionné", title:"Intervalles 2 min / 2 min",
+        details:[["Échauffement","10 min"],["Travail","5× (2 min rapide + 2 min récup jogging)"],["Intensité","Dur mais contrôlé (8/10)"],["Récup","10 min footing léger"]] },
+      { id:"s6", day:"Séance 6", type:"tempo", typeLabel:"Tempo", title:"Tempo bloc + côte",
+        details:[["Durée","45 min"],["Échauffement","10 min"],["Tempo","25 min allure 10km"],["Option côte","Si dispo: 2-3× montées de 200m"],["Récup","10 min doux"]] }
     ]
   },
   {
     week: 3, label: "Intensification", objective: "Pic de charge",
     sessions: [
-      {
-        id: "s7", day: "Séance 7", type: "endurance", typeLabel: "Endurance fondamentale",
-        title: "Long run — 8km minimum",
-        details: [
-          ["Durée", "60-65 min"],
-          ["Distance cible", "8-9 km"],
-          ["Allure", "Facile à modérée, régulière"],
-          ["Objectif", "Temps sur les pieds, pas la vitesse"]
-        ],
-        description: "La sortie longue la plus importante du plan. Prends soin de t'hydrater."
-      },
-      {
-        id: "s8", day: "Séance 8", type: "fractionne", typeLabel: "Fractionné",
-        title: "3 min / 90 sec — force vitesse",
-        details: [
-          ["Échauffement", "12 min progressif"],
-          ["Travail", "4× (3 min allure vive + 90 sec marche/jogging)"],
-          ["Intensité", "Très soutenu, difficile de parler (8-9/10)"],
-          ["Récup", "10 min doux"]
-        ],
-        description: "Séance difficile intentionnellement. Gère l'effort sur les 3 min, ne pars pas trop fort."
-      },
-      {
-        id: "s9", day: "Séance 9", type: "tempo", typeLabel: "Tempo",
-        title: "Simulation partielle de course",
-        details: [
-          ["Structure", "Échauffement 10 min / 30 min allure course / retour 5 min"],
-          ["Mental", "Visualise le jour J, cale ta respiration"],
-          ["Objectif", "30 min sans baisser le rythme"]
-        ],
-        description: "C'est la répétition générale. Toutes les conditions réelles si possible."
-      }
+      { id:"s7", day:"Séance 7", type:"endurance", typeLabel:"Endurance fondamentale", title:"Long run — 8km minimum",
+        details:[["Durée","60-65 min"],["Distance cible","8-9 km"],["Allure","Facile à modérée, régulière"],["Objectif","Temps sur les pieds, pas la vitesse"]] },
+      { id:"s8", day:"Séance 8", type:"fractionne", typeLabel:"Fractionné", title:"3 min / 90 sec — force vitesse",
+        details:[["Échauffement","12 min progressif"],["Travail","4× (3 min allure vive + 90 sec marche/jogging)"],["Intensité","Très soutenu, difficile de parler (8-9/10)"],["Récup","10 min doux"]] },
+      { id:"s9", day:"Séance 9", type:"tempo", typeLabel:"Tempo", title:"Simulation partielle de course",
+        details:[["Structure","Échauffement 10 min / 30 min allure course / retour 5 min"],["Mental","Visualise le jour J, cale ta respiration"],["Objectif","30 min sans baisser le rythme"]] }
     ]
   },
   {
     week: 4, label: "Affûtage", objective: "Fraîcheur maximale pour le jour J",
     sessions: [
-      {
-        id: "s10", day: "Séance 10", type: "recup", typeLabel: "Récupération active",
-        title: "Footing très léger",
-        details: [
-          ["Durée", "30 min max"],
-          ["Intensité", "Très très facile (5/10)"],
-          ["Objectif", "Garder les jambes actives, pas les fatiguer"],
-          ["Conseil", "Si tu te sens fatigué : repos total ok aussi"]
-        ],
-        description: "La semaine d'affûtage commence. Moins c'est plus."
-      },
-      {
-        id: "s11", day: "Séance 11", type: "fractionne", typeLabel: "Fractionné court",
-        title: "Petites accélérations vives",
-        details: [
-          ["Durée", "25 min total"],
-          ["Échauffement", "10 min"],
-          ["Travail", "6× 30 sec rapide + 1 min récup — jambes légères"],
-          ["Récup", "10 min doux"]
-        ],
-        description: "On réveille les jambes sans se fatiguer. Ces accélérations sont courtes et explosives."
-      },
-      {
-        id: "s12", day: "Séance 12", type: "objectif", typeLabel: "Veille de course",
-        title: "Activation pré-course",
-        details: [
-          ["Durée", "20 min max"],
-          ["Contenu", "15 min footing très léger + 4× 50m accélérations douces"],
-          ["Heure", "Idéalement la veille ou matin J-2"],
-          ["Repos", "Bien dormir, bien manger, pas de stress"]
-        ],
-        description: "Tu es prêt(e). Cette sortie est juste pour ouvrir les jambes. Le travail est fait."
-      }
+      { id:"s10", day:"Séance 10", type:"recup", typeLabel:"Récupération active", title:"Footing très léger",
+        details:[["Durée","30 min max"],["Intensité","Très très facile (5/10)"],["Objectif","Garder les jambes actives, pas les fatiguer"],["Conseil","Si tu te sens fatigué : repos total ok aussi"]] },
+      { id:"s11", day:"Séance 11", type:"fractionne", typeLabel:"Fractionné court", title:"Petites accélérations vives",
+        details:[["Durée","25 min total"],["Échauffement","10 min"],["Travail","6× 30 sec rapide + 1 min récup — jambes légères"],["Récup","10 min doux"]] },
+      { id:"s12", day:"Séance 12", type:"objectif", typeLabel:"Veille de course", title:"Activation pré-course",
+        details:[["Durée","20 min max"],["Contenu","15 min footing très léger + 4× 50m accélérations douces"],["Heure","Idéalement la veille ou matin J-2"],["Repos","Bien dormir, bien manger, pas de stress"]] }
     ]
   }
 ];
 
-let data = JSON.parse(localStorage.getItem('run10k_v1') || '{"sessions":{}, "currentWeek": 0}');
+let data = JSON.parse(localStorage.getItem('run10k_v2') || '{"sessions":{},"currentWeek":0}');
 let currentWeek = data.currentWeek || 0;
-let currentView = 'program';
 
-function saveData() {
-  localStorage.setItem('run10k_v1', JSON.stringify(data));
-}
-
-function showView(v) {
-  currentView = v;
-  document.getElementById('programView').style.display = v === 'program' ? 'block' : 'none';
-  document.getElementById('aiView').style.display = v === 'ai' ? 'block' : 'none';
-  document.querySelectorAll('.tab').forEach((t, i) => {
-    t.classList.toggle('active', (i === 0 && v === 'program') || (i === 1 && v === 'ai'));
-  });
-}
+function saveData() { localStorage.setItem('run10k_v2', JSON.stringify(data)); }
 
 function renderWeekNav() {
-  const nav = document.getElementById('weekNav');
-  nav.innerHTML = PROGRAM.map((w, i) => `
-    <button class="week-btn ${i === currentWeek ? 'active' : ''}" onclick="setWeek(${i})">
-      Sem. ${i + 1}
-    </button>
-  `).join('');
+  document.getElementById('weekNav').innerHTML = PROGRAM.map((w,i) =>
+    `<button class="week-btn ${i===currentWeek?'active':''}" onclick="setWeek(${i})">Sem. ${i+1}</button>`
+  ).join('');
 }
 
-function setWeek(i) {
-  currentWeek = i;
-  data.currentWeek = i;
-  saveData();
-  renderWeekNav();
-  renderWeek();
-}
+function setWeek(i) { currentWeek=i; data.currentWeek=i; saveData(); renderWeekNav(); renderWeek(); }
 
 function renderStats() {
-  const total = 12;
-  const done = Object.values(data.sessions).filter(s => s.validated).length;
-  const distances = Object.values(data.sessions).filter(s => s.distance).map(s => parseFloat(s.distance) || 0);
-  const totalKm = distances.reduce((a, b) => a + b, 0);
-  const feelings = Object.values(data.sessions).filter(s => s.feeling).map(s => parseInt(s.feeling));
-  const avgFeeling = feelings.length ? (feelings.reduce((a, b) => a + b, 0) / feelings.length).toFixed(1) : '–';
+  const done = Object.values(data.sessions).filter(s=>s.validated).length;
+  const totalKm = Object.values(data.sessions).filter(s=>s.distance).reduce((a,s)=>a+(parseFloat(s.distance)||0),0);
+  const feelings = Object.values(data.sessions).filter(s=>s.feeling).map(s=>parseInt(s.feeling));
+  const avgF = feelings.length ? (feelings.reduce((a,b)=>a+b,0)/feelings.length).toFixed(1) : '–';
+  const allures = Object.values(data.sessions).filter(s=>s.paceCourse).map(s=>s.paceCourse).filter(Boolean);
+  const lastAllure = allures.length ? allures[allures.length-1] : '–';
 
   document.getElementById('statsRow').innerHTML = `
-    <div class="stat-card"><div class="stat-value">${done}/${total}</div><div class="stat-label">Séances</div></div>
+    <div class="stat-card"><div class="stat-value">${done}/12</div><div class="stat-label">Séances</div></div>
     <div class="stat-card"><div class="stat-value">${totalKm.toFixed(1)}</div><div class="stat-label">Km parcourus</div></div>
-    <div class="stat-card"><div class="stat-value">${avgFeeling}</div><div class="stat-label">Ressenti moyen</div></div>
-    <div class="stat-card"><div class="stat-value">${Math.round((done/total)*100)}%</div><div class="stat-label">Progression</div></div>
+    <div class="stat-card"><div class="stat-value">${avgF}</div><div class="stat-label">Ressenti moy.</div></div>
+    <div class="stat-card"><div class="stat-value">${lastAllure}</div><div class="stat-label">Dernière allure</div></div>
   `;
-
-  const pct = Math.round((done/total)*100);
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressLabel').textContent = `${done} / ${total} séances complétées`;
+  document.getElementById('progressFill').style.width = Math.round((done/12)*100)+'%';
+  document.getElementById('progressLabel').textContent = `${done} / 12 séances complétées`;
 }
 
 function renderWeek() {
   const week = PROGRAM[currentWeek];
-  const container = document.getElementById('weekContent');
-
-  container.innerHTML = `
-    <div class="week-header" style="margin-bottom:20px">
+  document.getElementById('weekContent').innerHTML = `
+    <div class="week-header">
       <div class="week-title">Semaine ${week.week} — ${week.label}</div>
       <div class="week-objective">${week.objective}</div>
     </div>
-    <div class="sessions-grid">
-      ${week.sessions.map(s => renderSession(s)).join('')}
-    </div>
+    <div class="sessions-grid">${week.sessions.map(renderSession).join('')}</div>
   `;
 }
 
-function feelingEmoji(v) {
-  return ['😵', '😓', '😐', '😊', '🔥'][v-1];
-}
-
 function renderSession(s) {
-  const saved = data.sessions[s.id] || {};
-  const isValidated = !!saved.validated;
-
-  const typeClass = `type-${s.type}`;
-  const cardClass = isValidated ? 'completed' : (saved.feeling ? 'in-progress' : '');
-
-  const detailsHtml = s.details.map(([k, v]) =>
-    `<div><span style="min-width:100px;display:inline-block;color:var(--muted)">${k}</span> <strong>${v}</strong></div>`
+  const sv = data.sessions[s.id] || {};
+  const isVal = !!sv.validated;
+  const cardClass = isVal ? 'completed' : (sv.feeling ? 'in-progress' : '');
+  const detailsHtml = s.details.map(([k,v]) =>
+    `<div><span style="min-width:110px;display:inline-block;color:var(--muted)">${k}</span> <strong>${v}</strong></div>`
   ).join('');
 
   const feelingBtns = [1,2,3,4,5].map(v => {
     const emoji = ['😵','😓','😐','😊','🔥'][v-1];
-    const cls = saved.feeling == v ? `selected-${v}` : '';
-    return `<button class="feeling-btn ${cls}" onclick="setFeeling('${s.id}',${v})" title="${['Très dur','Dur','Ok','Bien','Excellent'][v-1]}">${emoji}</button>`;
+    const cls = sv.feeling==v ? `selected-${v}` : '';
+    return `<button class="feeling-btn ${cls}" onclick="setFeeling('${s.id}',${v})">${emoji}</button>`;
   }).join('');
 
-  const statusBtn = isValidated
+  const fatigueLevels = ['Reposé','Normal','Fatigué'];
+  const fatigueBtns = fatigueLevels.map((f,i) => {
+    const cls = sv.fatigue==i ? 'fat-selected' : '';
+    return `<button class="fatigue-btn ${cls}" onclick="setFatigue('${s.id}',${i})">${f}</button>`;
+  }).join('');
+
+  const statusBtn = isVal
     ? `<button class="btn-validated" onclick="unvalidate('${s.id}')">✓ Séance validée — annuler</button>`
     : `<button class="btn-validate" onclick="validate('${s.id}')">Valider la séance →</button>`;
+
+  const typeHasAllure = ['tempo','fractionne','objectif'].includes(s.type);
 
   return `
     <div class="session-card ${cardClass}" id="card-${s.id}">
       <div class="session-header">
         <div class="session-label">${s.day}</div>
-        <div class="session-type ${typeClass}">${s.typeLabel}</div>
+        <div class="session-type type-${s.type}">${s.typeLabel}</div>
       </div>
       <div class="session-title">${s.title}</div>
       <div class="session-details">${detailsHtml}</div>
@@ -759,156 +263,103 @@ function renderSession(s) {
       <div class="feedback-section">
         <span class="feedback-label">Ressenti post-séance</span>
         <div class="feeling-row">${feelingBtns}</div>
+
+        <span class="feedback-label">Fatigue avant la séance</span>
+        <div class="fatigue-row">${fatigueBtns}</div>
+
+        <div class="section-divider">Données Apple Watch</div>
         <div class="input-row">
           <div class="field-group">
             <label>Distance (km)</label>
             <input type="number" step="0.1" min="0" max="30" placeholder="ex: 7.2"
-              value="${saved.distance || ''}"
-              onchange="setField('${s.id}','distance',this.value)">
+              value="${sv.distance||''}" onchange="setField('${s.id}','distance',this.value)">
           </div>
           <div class="field-group">
             <label>Durée (min)</label>
             <input type="number" min="0" max="200" placeholder="ex: 42"
-              value="${saved.duration || ''}"
-              onchange="setField('${s.id}','duration',this.value)">
+              value="${sv.duration||''}" onchange="setField('${s.id}','duration',this.value)">
           </div>
+          <div class="field-group">
+            <label>Allure moy. (min/km)</label>
+            <input type="text" placeholder="ex: 5:30"
+              value="${sv.paceAvg||''}" onchange="setField('${s.id}','paceAvg',this.value)">
+          </div>
+          ${typeHasAllure ? `
+          <div class="field-group">
+            <label>Allure phases course</label>
+            <input type="text" placeholder="ex: 5:10"
+              value="${sv.paceCourse||''}" onchange="setField('${s.id}','paceCourse',this.value)">
+          </div>` : `<div class="field-group"></div>`}
           <div class="field-group">
             <label>FC moyenne (bpm)</label>
             <input type="number" min="60" max="220" placeholder="ex: 148"
-              value="${saved.hrAvg || ''}"
-              onchange="setField('${s.id}','hrAvg',this.value)">
+              value="${sv.hrAvg||''}" onchange="setField('${s.id}','hrAvg',this.value)">
           </div>
           <div class="field-group">
             <label>FC max (bpm)</label>
             <input type="number" min="60" max="220" placeholder="ex: 172"
-              value="${saved.hrMax || ''}"
-              onchange="setField('${s.id}','hrMax',this.value)">
+              value="${sv.hrMax||''}" onchange="setField('${s.id}','hrMax',this.value)">
+          </div>
+          <div class="field-group">
+            <label>Dénivelé + (m)</label>
+            <input type="number" min="0" max="2000" placeholder="ex: 45"
+              value="${sv.elevation||''}" onchange="setField('${s.id}','elevation',this.value)">
+          </div>
+          <div class="field-group">
+            <label>Météo / Chaleur</label>
+            <input type="text" placeholder="ex: 28°C soleil"
+              value="${sv.weather||''}" onchange="setField('${s.id}','weather',this.value)">
           </div>
         </div>
-        <textarea class="notes-input" placeholder="Notes libres…"
-          onchange="setField('${s.id}','notes',this.value)">${saved.notes || ''}</textarea>
+        <textarea class="notes-input" placeholder="Notes libres — douleurs, sensations, contexte…"
+          onchange="setField('${s.id}','notes',this.value)">${sv.notes||''}</textarea>
         ${statusBtn}
       </div>
     </div>
   `;
 }
 
-function setFeeling(id, v) {
-  if (!data.sessions[id]) data.sessions[id] = {};
-  data.sessions[id].feeling = v;
-  saveData();
-  renderWeek();
-  renderStats();
-}
+function setFeeling(id,v) { if(!data.sessions[id]) data.sessions[id]={}; data.sessions[id].feeling=v; saveData(); renderWeek(); renderStats(); }
+function setFatigue(id,v) { if(!data.sessions[id]) data.sessions[id]={}; data.sessions[id].fatigue=v; saveData(); renderWeek(); }
+function setField(id,field,val) { if(!data.sessions[id]) data.sessions[id]={}; data.sessions[id][field]=val; saveData(); renderStats(); }
+function validate(id) { if(!data.sessions[id]) data.sessions[id]={}; data.sessions[id].validated=true; saveData(); renderWeek(); renderStats(); }
+function unvalidate(id) { if(data.sessions[id]) data.sessions[id].validated=false; saveData(); renderWeek(); renderStats(); }
 
-function setField(id, field, val) {
-  if (!data.sessions[id]) data.sessions[id] = {};
-  data.sessions[id][field] = val;
-  saveData();
-  renderStats();
-}
-
-function validate(id) {
-  if (!data.sessions[id]) data.sessions[id] = {};
-  data.sessions[id].validated = true;
-  saveData();
-  renderWeek();
-  renderStats();
-}
-
-function unvalidate(id) {
-  if (data.sessions[id]) data.sessions[id].validated = false;
-  saveData();
-  renderWeek();
-  renderStats();
-}
-
-async function analyzeWithAI() {
-  const btn = document.getElementById('btnAnalyze');
-  const content = document.getElementById('aiContent');
-
-  const validatedSessions = [];
+function exportData() {
+  const fatLabels = ['Reposé','Normal','Fatigué'];
+  const feelLabels = ['😵 Très dur','😓 Dur','😐 Ok','😊 Bien','🔥 Excellent'];
+  let lines = ['=== MES DONNÉES ENTRAÎNEMENT 10KM ===\n'];
   PROGRAM.forEach(week => {
+    lines.push(`\n--- SEMAINE ${week.week} : ${week.label} ---`);
     week.sessions.forEach(s => {
-      const saved = data.sessions[s.id];
-      if (saved && saved.validated) {
-        validatedSessions.push({
-          session: `${s.day} (Sem.${week.week}) — ${s.title}`,
-          type: s.typeLabel,
-          feeling: saved.feeling ? `${saved.feeling}/5 ${['😵','😓','😐','😊','🔥'][saved.feeling-1]}` : 'non renseigné',
-          distance: saved.distance ? `${saved.distance} km` : 'non renseignée',
-          duration: saved.duration ? `${saved.duration} min` : 'non renseignée',
-          hrAvg: saved.hrAvg ? `${saved.hrAvg} bpm` : 'non renseignée',
-          hrMax: saved.hrMax ? `${saved.hrMax} bpm` : 'non renseignée',
-          notes: saved.notes || ''
-        });
-      }
+      const sv = data.sessions[s.id] || {};
+      if (!sv.validated) return;
+      lines.push(`\n${s.day} — ${s.title} (${s.typeLabel})`);
+      if (sv.feeling) lines.push(`  Ressenti : ${feelLabels[sv.feeling-1]}`);
+      if (sv.fatigue !== undefined) lines.push(`  Fatigue avant : ${fatLabels[sv.fatigue]}`);
+      if (sv.distance) lines.push(`  Distance : ${sv.distance} km`);
+      if (sv.duration) lines.push(`  Durée : ${sv.duration} min`);
+      if (sv.paceAvg) lines.push(`  Allure moyenne : ${sv.paceAvg} min/km`);
+      if (sv.paceCourse) lines.push(`  Allure phases course : ${sv.paceCourse} min/km`);
+      if (sv.hrAvg) lines.push(`  FC moyenne : ${sv.hrAvg} bpm`);
+      if (sv.hrMax) lines.push(`  FC max : ${sv.hrMax} bpm`);
+      if (sv.elevation) lines.push(`  Dénivelé : +${sv.elevation}m`);
+      if (sv.weather) lines.push(`  Météo : ${sv.weather}`);
+      if (sv.notes) lines.push(`  Notes : ${sv.notes}`);
     });
   });
-
-  if (validatedSessions.length === 0) {
-    content.textContent = "Valide au moins une séance pour que je puisse analyser tes performances.";
-    return;
+  const text = lines.join('\n');
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => alert('✓ Données copiées ! Colle-les dans Claude pour l\'analyse.'));
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    alert('✓ Données copiées ! Colle-les dans Claude pour l\'analyse.');
   }
-
-  const doneCount = Object.values(data.sessions).filter(s => s.validated).length;
-  const remaining = 12 - doneCount;
-
-  btn.disabled = true;
-  content.className = 'ai-content loading';
-  content.textContent = "Analyse en cours…";
-
-  const prompt = `Tu es un coach running expert et bienveillant. Voici les données d'entraînement d'un(e) coureur/coureuse qui prépare un 10km dans exactement 1 mois, récupérées depuis Apple Watch.
-
-SÉANCES COMPLÉTÉES (${doneCount}/12) :
-${validatedSessions.map(s => `- ${s.session}
-  Type: ${s.type} | Ressenti: ${s.feeling} | Distance: ${s.distance} | Durée: ${s.duration} | FC moy: ${s.hrAvg} | FC max: ${s.hrMax}${s.notes ? ` | Notes: "${s.notes}"` : ''}`).join('\n')}
-
-Il reste ${remaining} séances au programme.
-
-ZONES CARDIAQUES DE RÉFÉRENCE (méthode % FCmax estimée à 190 bpm si inconnue) :
-- Zone 1 (récup) : < 114 bpm
-- Zone 2 (endurance fondamentale) : 114–133 bpm
-- Zone 3 (tempo/seuil aérobie) : 133–152 bpm
-- Zone 4 (seuil lactique) : 152–171 bpm
-- Zone 5 (max) : > 171 bpm
-
-Si la FCmax réelle est visible dans les données, adapte les zones en conséquence.
-
-Donne une analyse concise et personnalisée en 3 parties :
-1. 📊 CE QUE JE VOIS — analyse des BPM par type de séance, cohérence ressenti/cardio, tendances
-2. ⚡ CE QUI EST BIEN — points forts à conserver
-3. 🎯 CE QUE J'ADAPTE — recommandations concrètes avec cibles BPM pour les prochaines séances
-
-Sois direct(e), motivant(e), pratique. Donne des chiffres concrets (ex: "garde ta FC sous 145 bpm sur les footings"). Pas plus de 280 mots. En français.`;
-
-  try {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1000,
-        messages: [{ role: "user", content: prompt }]
-      })
-    });
-
-    const result = await response.json();
-    const text = result.content?.map(c => c.text || '').join('') || "Erreur de réponse.";
-    content.className = 'ai-content';
-    content.textContent = text;
-  } catch (err) {
-    content.className = 'ai-content';
-    content.textContent = "Erreur de connexion à l'IA. Réessaie dans quelques secondes.";
-  }
-
-  btn.disabled = false;
 }
 
-// Init
-renderWeekNav();
-renderWeek();
-renderStats();
+renderWeekNav(); renderWeek(); renderStats();
 </script>
 </body>
 </html>
